@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  backend:
+    image: surya2dev/node-backend:latest
+    container_name: backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    restart: always
+
+  frontend:
+    image: surya2dev/node-frontend:latest
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
